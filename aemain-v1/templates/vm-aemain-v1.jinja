@@ -1,0 +1,41 @@
+resources:
+- name: aemain-v1-vm-{{ properties["stamp"] }}
+  type: compute.v1.instance
+  properties:
+    machineType: https://www.googleapis.com/compute/v1/projects/{{env['project']}}/zones/us-east1-c/machineTypes/n1-standard-8
+    zone: {{ properties["zone"] }}
+    canIpForward: false
+    deletionProtection: false
+    description: 'Automation Engine v12.3 cdd-cdi-cda demo v1'
+    disks:
+    - deviceName: aemain-cdrive-v1-{{ properties["stamp"] }}
+      type: PERSISTENT
+      autoDelete: true
+      boot: true
+      initializeParams:
+        sourceImage: projects/demos-esd-automation/global/images/aemain-cdrive-v1
+        diskName: aemain-cdrive-v1-{{ properties["stamp"] }}
+    - deviceName: aemain-ddrive-v1-{{ properties["stamp"] }}
+      type: PERSISTENT
+      autoDelete: false
+      boot: false
+      initializeParams:
+        sourceImage: projects/demos-esd-automation/global/images/aemain-ddrive-v1
+        diskName: aemain-ddrive-v1-{{ properties["stamp"] }}
+    networkInterfaces:
+    - accessConfigs:
+      - name: External NAT
+        networkTier: PREMIUM
+        natIP: $(ref.aemain-v1-ext-ip-{{ properties["stamp"] }}.address)
+        type: ONE_TO_ONE_NAT
+      name: nic0
+      network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+      subnetwork: $(ref.aemain-v1-subnet-{{ properties["stamp"] }}.selfLink)
+      networkIP: $(ref.aemain-v1-int-ip-{{ properties["stamp"] }}.address)
+    tags:
+      items:
+      - ae-server
+      - allow-rdp
+    labels:
+      demo-type: cdd-cdi-cda
+      demo-version: v1

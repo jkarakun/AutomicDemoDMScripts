@@ -1,0 +1,9 @@
+resources:
+- name: aemain-v1-network-{{ properties["stamp"] }}
+  properties:
+    autoCreateSubnetworks: false
+    routingConfig:
+      routingMode: REGIONAL
+    x_gcloud_bgp_routing_mode: REGIONAL
+    x_gcloud_subnet_mode: CUSTOM
+  type: compute.v1.network

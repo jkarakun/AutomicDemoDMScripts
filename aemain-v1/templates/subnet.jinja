@@ -1,0 +1,12 @@
+resources:
+- name: aemain-v1-subnet-{{ properties["stamp"] }}
+  properties:
+    ipCidrRange: {{ properties["ipcidr"] }}
+    region: {{ properties["region"] }}
+    routingConfig:
+      routingMode: REGIONAL
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    privateIpGoogleAccess: true
+    x_gcloud_bgp_routing_mode: REGIONAL
+    x_gcloud_subnet_mode: CUSTOM
+  type: compute.v1.subnetwork

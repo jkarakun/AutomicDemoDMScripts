@@ -1,0 +1,65 @@
+resources:
+- name: aecdd1-v1-int-ip-{{ properties["stamp"] }}
+  type: compute.v1.address
+  properties:
+    region:  {{ properties["region"] }}
+    address: {{ properties["iptri"] }}.3
+    addressType: INTERNAL
+    description: ''
+    purpose: GCE_ENDPOINT
+    subnetwork: $(ref.aemain-v1-subnet-{{ properties["stamp"] }}.selfLink)
+- name: aecdd2-v1-int-ip-{{ properties["stamp"] }}
+  properties:
+    region:  {{ properties["region"] }}
+    address: {{ properties["iptri"] }}.4
+    addressType: INTERNAL
+    description: ''
+    purpose: GCE_ENDPOINT
+    subnetwork: $(ref.aemain-v1-subnet-{{ properties["stamp"] }}.selfLink)
+  type: compute.v1.address
+- name: aejenkins-v1-int-ip-{{ properties["stamp"] }}
+  properties:
+    region:  {{ properties["region"] }}
+    address: {{ properties["iptri"] }}.5
+    addressType: INTERNAL
+    description: ''
+    purpose: GCE_ENDPOINT
+    subnetwork: $(ref.aemain-v1-subnet-{{ properties["stamp"] }}.selfLink)
+  type: compute.v1.address
+- name: aemain-v1-int-ip-{{ properties["stamp"] }}
+  properties:
+    region:  {{ properties["region"] }}
+    address: {{ properties["iptri"] }}.2
+    addressType: INTERNAL
+    description: ''
+    purpose: GCE_ENDPOINT
+    subnetwork: $(ref.aemain-v1-subnet-{{ properties["stamp"] }}.selfLink)
+  type: compute.v1.address
+- name: aemain-v1-ext-ip-{{ properties["stamp"] }}
+  properties:
+    addressType: EXTERNAL
+    region:  {{ properties["region"] }}
+    description: ''
+    networkTier: PREMIUM
+  type: compute.v1.address
+- name: aecdd1-v1-ext-ip-{{ properties["stamp"] }}
+  properties:
+    addressType: EXTERNAL
+    region:  {{ properties["region"] }}
+    description: ''
+    networkTier: PREMIUM
+  type: compute.v1.address
+- name: aecdd2-v1-ext-ip-{{ properties["stamp"] }}
+  properties:
+    addressType: EXTERNAL
+    region:  {{ properties["region"] }}
+    description: ''
+    networkTier: PREMIUM
+  type: compute.v1.address
+- name: aejenkins-v1-ext-ip-{{ properties["stamp"] }}
+  properties:
+    addressType: EXTERNAL
+    region:  {{ properties["region"] }}
+    description: ''
+    networkTier: PREMIUM
+  type: compute.v1.address

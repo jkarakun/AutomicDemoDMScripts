@@ -1,0 +1,132 @@
+resources:
+- name: aemain-gcp-deny-ingress-{{ properties["stamp"] }}
+  type: compute.v1.firewall
+  properties:
+    denied:
+    - IPProtocol: all
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 900
+    sourceRanges:
+    - 10.0.0.0/8
+- name: aemain-gcp-deny-egress-{{ properties["stamp"] }}
+  type: compute.v1.firewall
+  properties:
+    plan: aemain-gcp-deny-egress
+    denied:
+    - IPProtocol: all
+    description: ''
+    destinationRanges:
+    - 10.0.0.0/8
+    direction: EGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 900
+- name: awmain-allow-aeserv-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: tcp
+      ports:
+      - '80'
+      - '8080'
+      - '5222'
+      - '443'
+      - '8443'
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - 0.0.0.0/0
+    targetTags:
+    - ae-server
+  type: compute.v1.firewall
+- name: aemain-firewall-allow-internal-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: all
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - {{ properties["ipcidr"] }}
+  type: compute.v1.firewall
+- name: cam-pc-testnetworks{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: all
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - 173.160.156.187/32
+    - 216.161.252.106/32
+    - 73.221.194.15/32
+  type: compute.v1.firewall
+- name: aemain-icmp-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: icmp
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - 0.0.0.0/0
+  type: compute.v1.firewall
+- name: aemain-allow-rdp-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: tcp
+      ports:
+      - '3389'
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - {{ properties["ipcidr"] }}
+    targetTags:
+    - allow-rdp
+  type: compute.v1.firewall
+- name: aemain-allow-ssh-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: tcp
+      ports:
+      - '22'
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - {{ properties["ipcidr"] }}
+    targetTags:
+    - allow-ssh
+  type: compute.v1.firewall

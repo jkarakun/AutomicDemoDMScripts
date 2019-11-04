@@ -1,0 +1,21 @@
+resources:
+- name: aemain-v1-vm-{{ properties["stamp"] }}
+  type: vm-aemain-v1.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    zone: {{ properties["zone"] }}
+- name: aecdd1-v1-vm-{{ properties["stamp"] }}
+  type: vm-cdd1-v1.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    zone: {{ properties["zone"] }}
+- name: aecdd2-v1-vm-{{ properties["stamp"] }}
+  type: vm-cdd2-v1.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    zone: {{ properties["zone"] }}
+- name: aejenkins-v1-vm-{{ properties["stamp"] }}
+  type: vm-aejenkins-v1.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    zone: {{ properties["zone"] }}

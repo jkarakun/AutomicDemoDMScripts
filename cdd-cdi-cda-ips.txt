@@ -1,0 +1,8 @@
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aemain-extip-test1
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aecdd1-extip-test1
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aecdd2-extip-test1
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aejenkins-extip-test1
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aecdd1-int-ip
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aecdd2-int-ip
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aejenkins-int-ip
+https://www.googleapis.com/compute/v1/projects/demos-esd-automation/regions/us-east1/addresses/aemain-int-ip

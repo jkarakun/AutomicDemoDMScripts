@@ -1,0 +1,47 @@
+resources:
+- name: test-dns-records
+  type: dns_records.py
+  properties:
+    zoneName: aemain-private-zone{{ properties["dnsext"] }}
+    dnsName: aemain-private{{ properties["dnsext"] }}.net.
+    resourceRecordSets:
+      - name: aecdd1-v1.internal.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aecdd1-v1-int-ip-{{ properties["stamp"] }}.address)
+      - name: aecdd2-v1.internal.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aecdd2-v1-int-ip-{{ properties["stamp"] }}.address)
+      - name: aemain-v1.internal.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aemain-v1-int-ip-{{ properties["stamp"] }}.address)
+      - name: aejenkins-v1.internal.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aejenkins-v1-int-ip-{{ properties["stamp"] }}.address)
+      - name: aecdd1-v1.external.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aecdd1-v1-ext-ip-{{ properties["stamp"] }}.address)
+      - name: aecdd2-v1.external.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aecdd2-v1-ext-ip-{{ properties["stamp"] }}.address)
+      - name: aemain-v1.external.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aemain-v1-ext-ip-{{ properties["stamp"] }}.address)
+      - name: aejenkins-v1.external.aemain-private{{ properties["dnsext"] }}.net.
+        type: A
+        ttl: 20
+        rrdatas:
+          - $(ref.aejenkins-v1-ext-ip-{{ properties["stamp"] }}.address)

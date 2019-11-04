@@ -1,0 +1,34 @@
+resources:
+- name: aejenkins-v1-vm-{{ properties["stamp"] }}
+  type: compute.v1.instance
+  properties:
+    machineType: https://www.googleapis.com/compute/v1/projects/{{env['project']}}/zones/us-east1-c/machineTypes/n1-standard-2
+    zone: {{ properties["zone"] }}
+    canIpForward: false
+    deletionProtection: false
+    description: 'Automation Engine v12.3 cdd-cdi-cda demo v1'
+    disks:
+    - deviceName: aejenkins-v1-{{ properties["stamp"] }}
+      type: PERSISTENT
+      autoDelete: true
+      boot: true
+      initializeParams:
+        sourceImage: projects/demos-esd-automation/global/images/aejenkins-v1
+        diskName: aejenkins-v1-{{ properties["stamp"] }}
+    networkInterfaces:
+    - accessConfigs:
+      - name: External NAT
+        networkTier: PREMIUM
+        natIP: $(ref.aejenkins-v1-ext-ip-{{ properties["stamp"] }}.address)
+        type: ONE_TO_ONE_NAT
+      name: nic0
+      network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+      subnetwork: $(ref.aemain-v1-subnet-{{ properties["stamp"] }}.selfLink)
+      networkIP: $(ref.aejenkins-v1-int-ip-{{ properties["stamp"] }}.address)
+    tags:
+      items:
+      - ae-server
+      - allow-rdp
+    labels:
+      demo-type: cdd-cdi-cda
+      demo-version: v1

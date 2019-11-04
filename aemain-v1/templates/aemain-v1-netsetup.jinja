@@ -1,0 +1,33 @@
+resources:
+- name: aemain-v1-network-{{ properties["stamp"] }}
+  type: network.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+- name: aemain-v1-subnet-{{ properties["stamp"] }}
+  type: subnet.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    ipcidr: {{ properties["ipcidr"] }}
+    region: {{ properties["region"] }}
+- name: aemain-firewall-{{ properties["stamp"] }}
+  type: aemain-firewall.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    ipcidr: {{ properties["ipcidr"] }}
+- name: aemain-ipaddresses-{{ properties["stamp"] }}
+  type: ipaddresses.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    iptri: {{ properties["iptri"] }}
+    region: us-east1
+- name: aemain-private-zone{{ properties["dnsext"] }}
+  type: dns_managed_zone.py
+  properties:
+    zoneName: aemain-private-zone{{ properties["dnsext"] }}
+    dnsName: aemain-private{{ properties["dnsext"] }}.net.
+    description: 'Domain to resolve internal and external addresses for aemain'
+- name: aemain-dns-recordsset-{{ properties["stamp"] }}
+  type: aemain-dns-records.jinja
+  properties:
+    dnsext: {{ properties["dnsext"] }}
+    stamp: {{ properties["stamp"] }}

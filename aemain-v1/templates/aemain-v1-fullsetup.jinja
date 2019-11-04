@@ -1,0 +1,14 @@
+resources:
+- name: aemain-network-deployment-{{ properties["stamp"] }}
+  type: aemain-v1-netsetup.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    region: {{ properties["region"] }}
+    ipcidr: {{ properties["ipcidr"] }}
+    iptri: {{ properties["iptri"] }}
+    dnsext: {{ properties["dnsext"] }}
+- name: aemain-vm-deployment-{{ properties["stamp"] }}
+  type: aemain-v1-vmsetup.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    zone: {{ properties["zone"] }}

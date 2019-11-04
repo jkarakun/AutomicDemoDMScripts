@@ -1,0 +1,25 @@
+imports:
+- path: aemain-v1-fullsetup.jinja
+- path: aemain-v1-netsetup.jinja
+- path: network.jinja
+- path: subnet.jinja
+- path: aemain-firewall.jinja
+- path: ipaddresses.jinja
+- path: dns_managed_zone.py
+- path: aemain-dns-records.jinja
+- path: dns_records.py
+- path: aemain-v1-vmsetup.jinja
+- path: vm-aemain-v1.jinja
+- path: vm-aejenkins-v1.jinja
+- path: vm-cdd1-v1.jinja
+- path: vm-cdd2-v1.jinja
+resources:
+- name: aemain-full-deployment
+  type: aemain-v1-fullsetup.jinja
+  properties:
+    stamp: test1
+    region: us-east1
+    ipcidr: 192.168.3.0/24
+    iptri: 192.168.3
+    dnsext: 'test1'
+    zone: us-east1-c
