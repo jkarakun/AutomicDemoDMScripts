@@ -11,7 +11,7 @@ To execute these deployment scripts in your own GCP project:
 3. Go to the aemain-v1\templates directory
 4. Edit the parameters in aemain-v1-config.yaml to deploy in your preferred region and zone. The 'stamp' value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
 5. Execute: 
-    gcloud deployment-manager deployments create aemain-demo-v1 -config aemain-v1-config.yaml --preview
+#    gcloud deployment-manager deployments create aemain-demo-v1 --config aemain-v1-config.yaml --preview
     
 6. A preview of the environment will be generated that you can review and, if you choose, deploy.
 7. Review the configuration and click the deploy button (looks like a media play icon) if you want to crate all the resources.
