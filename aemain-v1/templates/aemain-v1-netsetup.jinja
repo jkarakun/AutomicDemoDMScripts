@@ -19,7 +19,7 @@ resources:
   properties:
     stamp: {{ properties["stamp"] }}
     iptri: {{ properties["iptri"] }}
-    region: us-east1
+    region: {{ properties["region"] }}
 - name: aemain-{{ properties["dnsext"] }}-zone
   type: dns_managed_zone.py
   properties:
