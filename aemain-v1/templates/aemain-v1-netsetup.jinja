@@ -20,11 +20,11 @@ resources:
     stamp: {{ properties["stamp"] }}
     iptri: {{ properties["iptri"] }}
     region: us-east1
-- name: aemain-private-zone{{ properties["dnsext"] }}
+- name: aemain-{{ properties["dnsext"] }}-zone
   type: dns_managed_zone.py
   properties:
-    zoneName: aemain-private-zone{{ properties["dnsext"] }}
-    dnsName: aemain-private{{ properties["dnsext"] }}.net.
+    zoneName: aemain-{{ properties["dnsext"] }}-zone
+    dnsName: aemain-{{ properties["dnsext"] }}.net.
     description: 'Domain to resolve internal and external addresses for aemain'
 - name: aemain-dns-recordsset-{{ properties["stamp"] }}
   type: aemain-dns-records.jinja
