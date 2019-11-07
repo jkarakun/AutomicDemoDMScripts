@@ -7,7 +7,7 @@ To execute these you will need:
 + A GCP account and project space.
 + The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) installed or use the [Google Cloud ](https://cloud.google.com/shell/docs/)
 + Access to the private demo images on the Broadcom ESD demo project.
-  - **For Broadcom Employees**: Message Marc Carkeek via Broadcom's Google Chat. This an be found in the [IAM Gui](https://console.cloud.google.com/iam-admin/iam).
+  - **For Broadcom Employees**: e-mail **marc.carkeek@broadcom.com** your "Google APIs Service Agent" member account. This can be found in the [IAM Gui](https://console.cloud.google.com/iam-admin/iam).
   - **For Partners**: Contact your primary Broadcom contact.
   - I'll grant you access as soon as I am able and let you know by e-mail.
 + The following API's enabled:
