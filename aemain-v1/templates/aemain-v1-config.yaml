@@ -19,9 +19,8 @@ resources:
   properties:
     stamp: test1
     region: us-east1
-# Note: These IP settings should not be changed. Some configuration files are statically set and require these values.
+    zone: us-east1-c
     ipcidr: 192.168.2.0/24
     iptri: 192.168.2
 # Note: Leave dnsext 'private'. If you set it to a value you'll need to change all the DNS names in the configuration files.
     dnsext: 'private'
-    zone: us-east1-c
