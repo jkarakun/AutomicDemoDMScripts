@@ -13,14 +13,14 @@ resources:
       autoDelete: true
       boot: true
       initializeParams:
-        sourceImage: projects/demos-esd-automation/global/images/aemain-cdrive-v1
+        sourceImage: projects/demos-esd-automation/global/images/aemain-cdrive-v2
         diskName: aemain-cdrive-v1-{{ properties["stamp"] }}
     - deviceName: aemain-ddrive-v1-{{ properties["stamp"] }}
       type: PERSISTENT
       autoDelete: false
       boot: false
       initializeParams:
-        sourceImage: projects/demos-esd-automation/global/images/aemain-ddrive-v1
+        sourceImage: projects/demos-esd-automation/global/images/aemain-ddrive-v2
         diskName: aemain-ddrive-v1-{{ properties["stamp"] }}
     networkInterfaces:
     - accessConfigs:

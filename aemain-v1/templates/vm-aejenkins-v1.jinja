@@ -6,14 +6,14 @@ resources:
     zone: {{ properties["zone"] }}
     canIpForward: false
     deletionProtection: false
-    description: 'Automation Engine v12.3 cdd-cdi-cda demo v1'
+    description: 'Jenkins and utility server for AE v12.3 cdd-cdi-cda demo v1'
     disks:
     - deviceName: aejenkins-v1-{{ properties["stamp"] }}
       type: PERSISTENT
       autoDelete: true
       boot: true
       initializeParams:
-        sourceImage: projects/demos-esd-automation/global/images/aejenkins-v1
+        sourceImage: projects/demos-esd-automation/global/images/aejenkins-v2
         diskName: aejenkins-v1-{{ properties["stamp"] }}
     networkInterfaces:
     - accessConfigs:
