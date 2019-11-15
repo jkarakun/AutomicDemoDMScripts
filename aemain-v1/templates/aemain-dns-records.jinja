@@ -2,7 +2,7 @@ resources:
 - name: test-dns-records
   type: dns_records.py
   properties:
-    zoneName: aemain-{{ properties["dnsext"] }}-mnged-zone
+    zoneName: aemain-{{ properties["dnsext"] }}-dnsmnged-zone
     dnsName: aedemo-{{ properties["dnsext"] }}.net.
     resourceRecordSets:
       - name: aecdd1-v1.internal.aedemo-{{ properties["dnsext"] }}.net.

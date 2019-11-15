@@ -17,9 +17,8 @@
 def generate_config(context):
     """Entry point for the deployment resources."""
     # Backward Compatibility with the old property `zoneName`
-    try:
-        managed_zone_name = context.properties['zoneName']
     dnsname = context.properties['dnsName']
+    managed_zone_name = context.env['name']
     managed_zone_description = context.properties['description']
     name_servers = '$(ref.' + context.env['name'] + '.nameServers)'
     project_id = context.properties.get('project', context.env['project'])

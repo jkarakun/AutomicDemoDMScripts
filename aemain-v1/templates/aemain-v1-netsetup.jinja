@@ -23,7 +23,6 @@ resources:
 - name: aemain-{{ properties["dnsext"] }}-dnsmnged-zone
   type: dns_managed_zone.py
   properties:
-    name: aemain-{{ properties["dnsext"] }}-mnged-zone
     dnsName: aedemo-{{ properties["dnsext"] }}.net.
     description: 'Domain to resolve internal and external addresses for aemain'
     visibility: private
@@ -32,9 +31,9 @@ resources:
       networks:
       - kind: dns#managedZonePrivateVisibilityConfigNetwork
         networkUrl: "https://www.googleapis.com/compute/v1/projects/{{env['project']}}/global/networks/aemain-v1-network-{{ properties["stamp"] }}"
-  metadata:
-    dependsOn:
-    - $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+      metadata:
+        dependsOn:
+        - $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
 - name: aemain-dns-recordsset-{{ properties["stamp"] }}
   type: aemain-dns-records.jinja
   properties:
