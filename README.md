@@ -35,9 +35,9 @@ To execute these deployment scripts in your own GCP project:
      `gcloud deployment-manager deployments update aemain-demo-v1`
   * **Deploy option 2** - In the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments):  
     click on the right arrow next to Deploy in the Deployment preview/detail window
-  * **Cancel option 1** - Execute the gcloud command: 
+  * **Cancel option 1** - Execute the gcloud command:  
      `gcloud deployment-manager deployments cancel aemain-demo-v1`
-  * **Cancel option 2** - Clicking on the trash icon on the Deployment preview/detail window).
+  * **Cancel option 2** - Clicking on the trash icon on the Deployment preview/detail window)
   
 7. RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork to access the machines. It is recommended that you add your personal IP to these rules. Determine your IP by searching ["What's my IP" on google.com](https://www.google.com/search?q=whats+my+ip+address) and adding it to the "aemain-allow-rdp" and "aemain-allow-ssh" firewall rule. **Note:** A fully defined IP address needs to have /32 at the end of it. EX: 192.168.1.1/32
 
