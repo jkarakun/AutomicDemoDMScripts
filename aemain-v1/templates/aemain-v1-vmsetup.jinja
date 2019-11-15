@@ -4,18 +4,22 @@ resources:
   properties:
     stamp: {{ properties["stamp"] }}
     zone: {{ properties["zone"] }}
+    diskv: {{ properties["diskv"] }}
 - name: aecdd1-v1-vm-{{ properties["stamp"] }}
   type: vm-cdd1-v1.jinja
   properties:
     stamp: {{ properties["stamp"] }}
     zone: {{ properties["zone"] }}
+    diskv: {{ properties["diskv"] }}
 - name: aecdd2-v1-vm-{{ properties["stamp"] }}
   type: vm-cdd2-v1.jinja
   properties:
     stamp: {{ properties["stamp"] }}
     zone: {{ properties["zone"] }}
+    diskv: {{ properties["diskv"] }}
 - name: aejenkins-v1-vm-{{ properties["stamp"] }}
   type: vm-aejenkins-v1.jinja
   properties:
     stamp: {{ properties["stamp"] }}
     zone: {{ properties["zone"] }}
+    diskv: {{ properties["diskv"] }}

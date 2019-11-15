@@ -2,45 +2,45 @@ resources:
 - name: test-dns-records
   type: dns_records.py
   properties:
-    zoneName: aemain-{{ properties["dnsext"] }}-zone
-    dnsName: aemain-{{ properties["dnsext"] }}.net.
+    zoneName: aemain-{{ properties["dnsext"] }}-mnged-zone
+    dnsName: aedemo-{{ properties["dnsext"] }}.net.
     resourceRecordSets:
-      - name: aecdd1-v1.internal.aemain-{{ properties["dnsext"] }}.net.
+      - name: aecdd1-v1.internal.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aecdd1-v1-int-ip-{{ properties["stamp"] }}.address)
-      - name: aecdd2-v1.internal.aemain-{{ properties["dnsext"] }}.net.
+      - name: aecdd2-v1.internal.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aecdd2-v1-int-ip-{{ properties["stamp"] }}.address)
-      - name: aemain-v1.internal.aemain-{{ properties["dnsext"] }}.net.
+      - name: aemain-v1.internal.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aemain-v1-int-ip-{{ properties["stamp"] }}.address)
-      - name: aejenkins-v1.internal.aemain-{{ properties["dnsext"] }}.net.
+      - name: aejenkins-v1.internal.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aejenkins-v1-int-ip-{{ properties["stamp"] }}.address)
-      - name: aecdd1-v1.external.aemain-{{ properties["dnsext"] }}.net.
+      - name: aecdd1-v1.external.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aecdd1-v1-ext-ip-{{ properties["stamp"] }}.address)
-      - name: aecdd2-v1.external.aemain-{{ properties["dnsext"] }}.net.
+      - name: aecdd2-v1.external.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aecdd2-v1-ext-ip-{{ properties["stamp"] }}.address)
-      - name: aemain-v1.external.aemain-{{ properties["dnsext"] }}.net.
+      - name: aemain-v1.external.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:
           - $(ref.aemain-v1-ext-ip-{{ properties["stamp"] }}.address)
-      - name: aejenkins-v1.external.aemain-{{ properties["dnsext"] }}.net.
+      - name: aejenkins-v1.external.aedemo-{{ properties["dnsext"] }}.net.
         type: A
         ttl: 20
         rrdatas:

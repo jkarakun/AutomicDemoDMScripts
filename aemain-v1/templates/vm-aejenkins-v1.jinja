@@ -13,7 +13,7 @@ resources:
       autoDelete: true
       boot: true
       initializeParams:
-        sourceImage: projects/demos-esd-automation/global/images/aejenkins-v2
+        sourceImage: projects/demos-esd-automation/global/images/aejenkins-img-{{ properties["diskv"] }}
         diskName: aejenkins-v1-{{ properties["stamp"] }}
     networkInterfaces:
     - accessConfigs:
