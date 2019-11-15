@@ -17,7 +17,7 @@ resources:
         diskName: aemain-cdrive-v1-{{ properties["stamp"] }}
     - deviceName: aemain-ddrive-v1-{{ properties["stamp"] }}
       type: PERSISTENT
-      autoDelete: false
+      autoDelete: true
       boot: false
       initializeParams:
         sourceImage: projects/demos-esd-automation/global/images/aemain-ddrive-img-{{ properties["diskv"] }}
