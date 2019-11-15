@@ -5,7 +5,7 @@ This repository contains GCP deployment manager template scripts that will creat
 
 ### Deployment of Environment
 
-To execute these you will need:
+To execute these you will need-
 + A GCP account and project space.
 + The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) installed or use the [Google Cloud ](https://cloud.google.com/shell/docs/)
 + Access to the private demo images on the Broadcom ESD demo project.
@@ -30,15 +30,16 @@ To execute these deployment scripts in your own GCP project:
 
 5. A preview of the environment will be generated that you can review in the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments)
 
-6. You can deploy the environment once you have reviewed the deployment preview by either:
-  i.  Executing a gcloud command:
+6. You can deploy or cancel the environment once you have reviewed the deployment:
+  * **Deploy option 1** - Executing the gcloud command:  
      `gcloud deployment-manager deployments update aemain-demo-v1`
-  ii. In the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments): 
+  * **Deploy option 2** - In the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments):  
     click on the right arrow next to Deploy in the Deployment preview/detail window
-  You can also cancel the preview by executing (or clicking on the trash icon on the preview window):
+  * **Cancel option 1** - Execute the gcloud command: 
      `gcloud deployment-manager deployments cancel aemain-demo-v1`
-
-7. RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork to access the machines. It is recommended that you add your personal IP to these rules. Determine your IP by searching ["What's my IP" on google.com](https://www.google.com/search?q=whats+my+ip+address) and adding it to the "aemain-allow-rdp" and "aemain-allow-ssh" firewall rule. Note: A fully defined IP address needs to have /32 at the end of it. EX: 192.168.1.1/32
+  * **Cancel option 2** - Clicking on the trash icon on the Deployment preview/detail window).
+  
+7. RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork to access the machines. It is recommended that you add your personal IP to these rules. Determine your IP by searching ["What's my IP" on google.com](https://www.google.com/search?q=whats+my+ip+address) and adding it to the "aemain-allow-rdp" and "aemain-allow-ssh" firewall rule. **Note:** A fully defined IP address needs to have /32 at the end of it. EX: 192.168.1.1/32
 
 8. Additional notes:
    - To access the linux machines you will need to add an ssh key to the VM profile.
