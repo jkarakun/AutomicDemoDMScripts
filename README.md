@@ -24,18 +24,18 @@ To execute these deployment scripts in your own GCP project:
 
 3. Edit the parameters in aemain-v1-config.yaml to deploy in your preferred region and zone. The 'stamp' value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
 
-4. Execute:
+4. In the Google Cloud SDK environment execute (note: you can change the name of the deployment: 'aemain-demo-v1'):
 
    `gcloud deployment-manager deployments create aemain-demo-v1 --config aemain-v1-config.yaml --preview`
 
 5. A preview of the environment will be generated that you can review in the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments)
 
-6. You can deploy the environment, but due to a bug you will need to execute the deployment TWICE. To do so: 
-   i.  Execute the gcloud command:
+6. You can deploy the environment once you have reviewed the deployment preview by either:
+  i.  Executing a gcloud command:
      `gcloud deployment-manager deployments update aemain-demo-v1`
-   ii. After the deployment fails execute the same command again: 
-     `gcloud deployment-manager deployments update aemain-demo-v1` 
-   You can also cancel the preview by executing (or clicking on the trash icon on the preview window):
+  ii. In the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments): 
+    click on the right arrow next to Deploy in the Deployment preview/detail window
+  You can also cancel the preview by executing (or clicking on the trash icon on the preview window):
      `gcloud deployment-manager deployments cancel aemain-demo-v1`
 
 7. RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork to access the machines. It is recommended that you add your personal IP to these rules. Determine your IP by searching ["What's my IP" on google.com](https://www.google.com/search?q=whats+my+ip+address) and adding it to the "aemain-allow-rdp" and "aemain-allow-ssh" firewall rule. Note: A fully defined IP address needs to have /32 at the end of it. EX: 192.168.1.1/32
