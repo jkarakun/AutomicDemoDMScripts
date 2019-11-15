@@ -47,3 +47,16 @@ To execute these deployment scripts in your own GCP project:
 
 ### Post-Deployment Steps and Information:
 
+##### Add your GCP project credentials to Automic
+You will need to add your service account credentials to Automic so it can provision temporary VM's for deployments.  
+To get your credentials:
+1. Go to [Create service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey) on GCP.  
+2. Select your **"Compute Engine default service account"**.  
+3. Select **JSON** for the key type and click **Create**.
+4. In the AWI open the **Release Automation** perspective.  
+5. Navigate to Provisioning > Infrastructure Providers
+6. Click the Add button in the toolbar.
+7. In the dialog, enter the infrastructure provider name.
+8. Select **Google Cloud** for type and click **Next**.  
+9. In the next dialog select the JSON file you downloaded in step 3 and click **ADD**.
+
