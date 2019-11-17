@@ -20,7 +20,7 @@ resources:
     stamp: {{ properties["stamp"] }}
     iptri: {{ properties["iptri"] }}
     region: {{ properties["region"] }}
-- name: aemain-{{ properties["dnsext"] }}-dnsmnged-zone
+- name: aemain-managed-zone-{{ properties["stamp"] }}
   type: dns_managed_zone.py
   properties:
     dnsName: aedemo-{{ properties["dnsext"] }}.net.

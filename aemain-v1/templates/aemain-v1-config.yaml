@@ -13,11 +13,13 @@ imports:
 - path: vm-aejenkins-v1.jinja
 - path: vm-cdd1-v1.jinja
 - path: vm-cdd2-v1.jinja
+- path: ip_reservation.py
+- path: ip_address.py
 resources:
 - name: aemain-full-deployment
   type: aemain-v1-fullsetup.jinja
   properties:
-    stamp: cam
+    stamp: mine
     region: us-east1
     zone: us-east1-c
     ipcidr: 192.168.2.0/24
