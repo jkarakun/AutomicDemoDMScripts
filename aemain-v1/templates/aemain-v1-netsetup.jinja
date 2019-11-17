@@ -9,17 +9,17 @@ resources:
     stamp: {{ properties["stamp"] }}
     ipcidr: {{ properties["ipcidr"] }}
     region: {{ properties["region"] }}
-- name: aemain-firewall-{{ properties["stamp"] }}
-  type: aemain-firewall.jinja
-  properties:
-    stamp: {{ properties["stamp"] }}
-    ipcidr: {{ properties["ipcidr"] }}
 - name: aemain-ipaddresses-{{ properties["stamp"] }}
   type: ipaddresses.jinja
   properties:
     stamp: {{ properties["stamp"] }}
     iptri: {{ properties["iptri"] }}
     region: {{ properties["region"] }}
+- name: aemain-firewall-{{ properties["stamp"] }}
+  type: aemain-firewall.jinja
+  properties:
+    stamp: {{ properties["stamp"] }}
+    ipcidr: {{ properties["ipcidr"] }}
 - name: aemain-managed-zone-{{ properties["stamp"] }}
   type: dns_managed_zone.py
   properties:

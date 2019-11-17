@@ -50,6 +50,23 @@ resources:
     targetTags:
     - ae-server
   type: compute.v1.firewall
+- name: aemain-firewall-allow-external-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: all
+    description: 'External communication from aemain to self(required for AWI)'
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - $(ref.aemain-v1-ext-ip-{{ properties["stamp"] }}.address)/32
+    metadata:
+      dependsOn:
+      - $(ref.aemain-v1-ext-ip-{{ properties["stamp"] }}.selfLink)
+  type: compute.v1.firewall
 - name: aemain-firewall-allow-internal-{{ properties["stamp"] }}
   properties:
     allowed:
