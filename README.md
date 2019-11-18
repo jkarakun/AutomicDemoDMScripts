@@ -32,7 +32,7 @@ To execute the template you will need-
 2. Click the Activate Cloud Shell button (looks like '**>\_**') in the upper right of the console window.
 
 3. From the command line copy this repository to a location where you can run the gcloud command:
-   `git clone https://github.com/AutomicDemo/AutomicDemoDMScripts`
+   `git clone https://github.com/AutomicDemo/AutomicDemoDMScripts/tree/v1.0-beta.7`
 
 4. `cd` to the **AutomicDemoDMScripts/aemain-v1/templates** directory of the copied repository.
 
