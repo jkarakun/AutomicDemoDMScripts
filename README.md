@@ -22,7 +22,7 @@ To execute these deployment scripts in your own GCP project:
 
 2. Go to the aemain-v1/templates directory of the copied repository.
 
-3. Edit the parameters in aemain-v1-config.yaml to deploy in your preferred region and zone. The 'stamp' value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
+3. Edit the parameters in aemain-v1-config.yaml to deploy in your preferred region and zone. The **'stamp'** value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
 
 4. In the Google Cloud SDK environment execute (note: you can change the name of the deployment: 'aemain-demo-v1'):
 
@@ -44,15 +44,15 @@ To execute these deployment scripts in your own GCP project:
 ##### Set firewall rules to allow access. . . but not too much access
 RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork by default. It is recommended that you add **ONLY** your personal IPV4 address(es) or a **VERY LIMITED** CIDR Block. (Ex: 192.168.1.1/32 gives access to only that IP address. 192.168.1.1/24 gives access the range 192.168.1.1 - 192.168.1.255)
 1. Determine your IP by going to [What Is My IP Address](https://whatismyipaddress.com/). You will need the IPV4 address.
-2. Add this the "aemain-allow-rdp-???" and "aemain-allow-ssh-???" firewall rule. **Note:** A fully defined IP address needs to have /32 at the end of it. For more informaiton EX: 192.168.1.1/32
+2. Add this the "aemain-allow-rdp-???" and "aemain-allow-ssh-???" firewall rule. **Note:** A fully defined IP address needs to have /32 at the end of it.  
 
-8. Additional notes:
+- Additional notes:
    - To access the linux machines you will need to add an ssh key to the VM profile.
-   - Passwords are the same as the default passwords for the master environment for now.
+   - Passwords are the same as the default passwords for the master environment for now.  
 
 ##### Add your GCP project credentials to Automic
 You will need to add your service account credentials to Automic so it can provision temporary VM's for deployments.  
-To get your credentials:
+To get your credentials:  
 1. Go to [Create service account key](https://console.cloud.google.com/apis/credentials/serviceaccountkey) on GCP.  
 2. Select your **"Compute Engine default service account"**.  
 3. Select **JSON** for the key type and click **Create**.
@@ -79,3 +79,8 @@ To get your credentials:
 
 ##### Working with the demo system.
 
+The 'automic' user on AEMAIN-V1 can be used to access AWI/CDA, CDD, Jenkins, Github, and Rally. User names and passwords are saved in the Chrome browser and links to all the applications are in the Bookmarks Bar.
+
+Starting the demo:  
+- In Jenkins build the DigitalBankingAppPayment app. This will start the Release in CDD when it is finished.
+- You can set up your own Github user and repoint the DigitalBankingAppPayment to that. You can then trigger the build with a code change.
