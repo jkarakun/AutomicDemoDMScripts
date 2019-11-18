@@ -60,3 +60,8 @@ To get your credentials:
 8. Select **Google Cloud** for type and click **Next**.  
 9. In the next dialog select the JSON file you downloaded in step 3 and click **ADD**.
 
+##### Update GCP project setting variables.
+1. In the AWI client click in the search box in the upper right and type **VARA.GCP.INFO**
+2. Click on the Vara object it finds to edit it. 
+3. Update the variables so they match the settings for your project.
+
