@@ -21,7 +21,7 @@ To execute these you will need-
 
 1. Log into the [Google cloud](https://cloud.google.com/) and go to the [GCP Console] (https://console.cloud.google.com/home/dashboard).
 
-2. Click the Activate Cloud Shell button 
+2. Click the Activate Cloud Shell button (looks like '**>\_**') in the upper right of the console window.
 
 3. From the command line copy this repository to a location where you can run the gcloud command:
    `git clone https://github.com/AutomicDemo/AutomicDemoDMScripts`
