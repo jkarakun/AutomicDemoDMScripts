@@ -7,9 +7,9 @@ This repository contains GCP deployment manager template scripts that will creat
 
 To execute these you will need-
 + A GCP account and project space.
-+ The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) installed or use the [Google Cloud ](https://cloud.google.com/shell/docs/)
++ The easiest option is to use the [Google Cloud Shell](https://cloud.google.com/shell/docs/). You can also execute this locally using the [Google Cloud SDK](https://cloud.google.com/sdk/docs/) installed
 + Access to the private demo images on the Broadcom ESD demo project.
-  - **For Broadcom Employees**: e-mail **marc.carkeek@broadcom.com** your "Google APIs Service Agent" member account. This can be found in the [IAM Gui](https://console.cloud.google.com/iam-admin/iam).
+  - **For Broadcom Employees**: e-mail or IM **marc.carkeek@broadcom.com** your "Google APIs Service Agent" member account. This can be found in the [IAM Gui](https://console.cloud.google.com/iam-admin/iam).
   - **For Partners**: Contact your primary Broadcom contact.
   - I'll grant you access as soon as I am able and let you know by e-mail.
 + The following API's enabled:
@@ -17,20 +17,26 @@ To execute these you will need-
   - [Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com?q=cloud%20dns)
   - [Compute API](https://console.cloud.google.com/apis/library/compute.googleapis.com?q=compute)
 
-To execute these deployment scripts in your own GCP project:
-1. Copy this repository to a location where you can run the gcloud command.
+##### To execute these deployment scripts in your own GCP project:
 
-2. Go to the aemain-v1/templates directory of the copied repository.
+1. Log into the [Google cloud](https://cloud.google.com/) and go to the [GCP Console] (https://console.cloud.google.com/home/dashboard).
 
-3. Edit the parameters in aemain-v1-config.yaml to deploy in your preferred region and zone. The **'stamp'** value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
+2. Click the Activate Cloud Shell button 
 
-4. In the Google Cloud SDK environment execute (note: you can change the name of the deployment: 'aemain-demo-v1'):
+3. From the command line copy this repository to a location where you can run the gcloud command:
+   `git clone https://github.com/AutomicDemo/AutomicDemoDMScripts`
+
+4. `cd` to the **AutomicDemoDMScripts/aemain-v1/templates** directory of the copied repository.
+
+5. Edit the **properties:** section in aemain-v1-config.yaml to deploy in your preferred region and zone. The **'stamp'** value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
+
+6. In the Google Cloud SDK environment execute (note: you can change the name of the deployment: 'aemain-demo-v1'):
 
    `gcloud deployment-manager deployments create aemain-demo-v1 --config aemain-v1-config.yaml --preview`
 
-5. A preview of the environment will be generated that you can review in the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments)
+7. A preview of the environment will be generated that you can review in the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments)
 
-6. You can deploy or cancel the environment once you have reviewed the deployment:
+8. You can deploy or cancel the environment once you have reviewed the deployment:
   * **Deploy option 1** - Executing the gcloud command:  
      `gcloud deployment-manager deployments update aemain-demo-v1`
   * **Deploy option 2** - In the [Deployment Manager GUI](https://console.cloud.google.com/dm/deployments):  
@@ -73,7 +79,7 @@ To get your credentials:
 | IM_PROVIDER| Infra. Provider (CDA) | Provider name created in step 7 of previous section (EX: GCP_MYDEMO) |
 | PROJECT | GCP Project Name | Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/project/project-id" -H "Metadata-Flavor: Google"` |
 | REGION | GCP Region of Deployed Demo | Ex: 'us-east1'. Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/instance/zone" -H "Metadata-Flavor: Google"` |
-| SERVICEACCOUNT | GCP "Compute Engine default service account" | Can be found in [IAM Gui](https://console.cloud.google.com/iam-admin/iam). |
+| SERVICEACCOUNT | GCP "Compute Engine default service account" | This is your GCP Project Number with the suffix *'-compute@developer.gserviceaccount.com'*. Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/project/numeric-project-id" -H "Metadata-Flavor: Google"` |
 | SUBNETWORK | Subnetwork of deployed demo system | Set by deployment: aemain-v1-subnet-**STAMP VALUE** (Ex: aemain-v1-subnet-mine) |
 | ZONE | GCP Zone of Deployed Demo | Ex: 'us-east1-c'. Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/instance/zone" -H "Metadata-Flavor: Google"` |
 
