@@ -1,11 +1,19 @@
-# automic-demo-deployment-scripts
-Deployment Scripts for Automic demo environments
+# GCP Deployment Manager scripts for Automic CDA-CDD Demo environment.
+The template scripts in this repository provision 4 machines with the current releases of the Automic Automation Engine, Automic Continuous Delivery Automation, and Automic Continous Delivery Director. A full Jenkins build environment, artifact storage environment, and other tools are also included. 
+The templates deploy the following machines.:  
 
-This repository contains GCP deployment manager template scripts that will create demo instances for Automic, CDD, and other related products.
+| Machine Name | Type | Purpose | 
+| ---- | ---- | ---- |
+| AEMAIN-V# | Windows | Primary Jump Server into environment. AE 12.3.1, CDA 12.3.1, AE Analytics, Infrastructure Manager, AWI, Terraform |
+| AEJENKINS-V# | Windows | Jenkins, Helm Charts (Work In Progress) |
+| AECDD2-V# | Linux | CDD, CDI, Docker, Tomcat |
+| AECDD1-V# | Linux | CDD and CDI Repository (Postgres and MongoDB) |
+
+The system is fully available about 8-10 minutes after the deployment is kicked off.
 
 ### Deployment of Environment
 
-To execute these you will need-
+To execute the template you will need-
 + A GCP account and project space.
 + The easiest option is to use the [Google Cloud Shell](https://cloud.google.com/shell/docs/). You can also execute this locally using the [Google Cloud SDK](https://cloud.google.com/sdk/docs/) installed
 + Access to the private demo images on the Broadcom ESD demo project.
