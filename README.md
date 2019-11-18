@@ -38,14 +38,17 @@ To execute these deployment scripts in your own GCP project:
   * **Cancel option 1** - Execute the gcloud command:  
      `gcloud deployment-manager deployments cancel aemain-demo-v1`
   * **Cancel option 2** - Clicking on the trash icon on the Deployment preview/detail window)
-  
-7. RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork to access the machines. It is recommended that you add your personal IP to these rules. Determine your IP by searching ["What's my IP" on google.com](https://www.google.com/search?q=whats+my+ip+address) and adding it to the "aemain-allow-rdp" and "aemain-allow-ssh" firewall rule. **Note:** A fully defined IP address needs to have /32 at the end of it. EX: 192.168.1.1/32
+
+### Post-Deployment Steps and Information:
+
+##### Set firewall rules to allow access. . . but not too much access
+RDP and SSH firewall rules only permit internal IP addresses from the newly created subnetwork by default. It is recommended that you add **ONLY** your personal IPV4 address(es) or a **VERY LIMITED** CIDR Block. (Ex: 192.168.1.1/32 gives access to only that IP address. 192.168.1.1/24 gives access the range 192.168.1.1 - 192.168.1.255)
+1. Determine your IP by going to [What Is My IP Address](https://whatismyipaddress.com/). You will need the IPV4 address.
+2. Add this the "aemain-allow-rdp-???" and "aemain-allow-ssh-???" firewall rule. **Note:** A fully defined IP address needs to have /32 at the end of it. For more informaiton EX: 192.168.1.1/32
 
 8. Additional notes:
    - To access the linux machines you will need to add an ssh key to the VM profile.
    - Passwords are the same as the default passwords for the master environment for now.
-
-### Post-Deployment Steps and Information:
 
 ##### Add your GCP project credentials to Automic
 You will need to add your service account credentials to Automic so it can provision temporary VM's for deployments.  
@@ -56,12 +59,23 @@ To get your credentials:
 4. In the AWI open the **Release Automation** perspective.  
 5. Navigate to Provisioning > Infrastructure Providers
 6. Click the Add button in the toolbar.
-7. In the dialog, enter the infrastructure provider name.
+7. In the dialog, enter an infrastructure provider name (EX: GCP_MYDEMO).
 8. Select **Google Cloud** for type and click **Next**.  
 9. In the next dialog select the JSON file you downloaded in step 3 and click **ADD**.
 
 ##### Update GCP project setting variables.
 1. In the AWI client click in the search box in the upper right and type **VARA.GCP.INFO**
 2. Click on the Vara object it finds to edit it. 
-3. Update the variables so they match the settings for your project.
+3. Update the variables so they match the settings for your project. Values can be  
+
+| Variable | Desc | Value | 
+| ------------ | ------------- | ------------- |
+| IM_PROVIDER| Infra. Provider (CDA) | Provider name created in step 7 of previous section (EX: GCP_MYDEMO) |
+| PROJECT | GCP Project Name | Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/project/project-id" -H "Metadata-Flavor: Google"` |
+| REGION | GCP Region of Deployed Demo | Ex: 'us-east1'. Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/instance/zone" -H "Metadata-Flavor: Google"` |
+| SERVICEACCOUNT | GCP "Compute Engine default service account" | Can be found in [IAM Gui](https://console.cloud.google.com/iam-admin/iam). |
+| SUBNETWORK | Subnetwork of deployed demo system | Set by deployment: aemain-v1-subnet-**STAMP VALUE** (Ex: aemain-v1-subnet-mine) |
+| ZONE | GCP Zone of Deployed Demo | Ex: 'us-east1-c'. Can be displayed by executing the following command on AEMAIN VM:  `curl "http://metadata.google.internal/computeMetadata/v1/instance/zone" -H "Metadata-Flavor: Google"` |
+
+##### Working with the demo system.
 
