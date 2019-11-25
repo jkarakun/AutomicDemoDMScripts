@@ -20,25 +20,26 @@ To execute the template you will need-
   - **For Broadcom Employees**: e-mail or IM **marc.carkeek@broadcom.com** your "Google APIs Service Agent" member account. This can be found in the [IAM Gui](https://console.cloud.google.com/iam-admin/iam).
   - **For Partners**: Contact your primary Broadcom contact.
   - I'll grant you access as soon as I am able and let you know by e-mail.
-+ The following API's enabled:
++ The following API's enabled:  
   - [Deployment Manager V2 API](https://console.cloud.google.com/apis/library/deploymentmanager.googleapis.com?q=deploy)
   - [Cloud DNS API](https://console.cloud.google.com/apis/library/dns.googleapis.com?q=cloud%20dns)
   - [Compute API](https://console.cloud.google.com/apis/library/compute.googleapis.com?q=compute)
 
 ##### To execute these deployment scripts in your own GCP project:
+The following steps will take your through the process of copying the GCP Deployment Manager scripts from GitHub, altering the configuration pre-deployment, and executing the deployment. 
 
 1. Log into the [Google cloud](https://cloud.google.com/) and go to the [GCP Console] (https://console.cloud.google.com/home/dashboard).
 
 2. Click the Activate Cloud Shell button (looks like '**>\_**') in the upper right of the console window.
 
-3. From the command line copy this repository to a location where you can run the gcloud command:
+3. From the command line copy this repository to a location where you can run the gcloud command:  
    `git clone -b v1.0-beta.7 https://github.com/AutomicDemo/AutomicDemoDMScripts`
 
 4. `cd` to the **AutomicDemoDMScripts/aemain-v1/templates** directory of the copied repository.
 
 5. Edit the **properties:** section in aemain-v1-config.yaml to deploy in your preferred region and zone. The **'stamp'** value allows you to personalize all the base-names of the objects created. It is not necessary to change this, but it cannot be NULL.
 
-6. In the Google Cloud SDK environment execute (note: you can change the name of the deployment: 'aemain-demo-v1'):
+6. In the Google Cloud SDK environment execute (note: you can change the name of the deployment: 'aemain-demo-v1'):  
 
    `gcloud deployment-manager deployments create aemain-demo-v1 --config aemain-v1-config.yaml --preview`
 
