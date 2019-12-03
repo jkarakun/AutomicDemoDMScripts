@@ -12,14 +12,19 @@ do
       break
       ;;
     *)
-      echo "Deleting deployment $sel_dep . . ."
-      dep_status=``
-      #if [ ]
-      rset=`gcloud deployment-manager resources list --deployment=$sel_dep --filter="Type:gcp-types/dns-v1:managedZones" --simple-list`
-      touch empty-file
-      #gcloud dns record-sets import -z $rset --delete-all-existing empty-file
-      rm empty-file
-      #gcloud deployment-manager deployments delete $sel_dep
+      preview_check=`gcloud deployment-manager deployments list --simple-list --filter="name='$sel_dep' AND operation.operationType='preview'"`
+      if [ $sel_dep != $preview_check ]
+      then
+        echo "Deleting deployment $sel_dep . . ."
+        rset=`gcloud deployment-manager resources list --deployment=$sel_dep --filter="Type:gcp-types/dns-v1:managedZones" --simple-list`
+        touch empty-file
+        gcloud dns record-sets import -z $rset --delete-all-existing empty-file
+        rm empty-file
+        gcloud deployment-manager deployments delete $sel_dep
+      else
+        echo "Cancelling preview $sel_dep . . ."
+        gcloud deployment-manager deployments cancel-preview $sel_dep
+      fi
       break
       ;;
     esac
