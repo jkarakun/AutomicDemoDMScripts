@@ -46,7 +46,7 @@ resources:
     network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
     priority: 1000
     sourceRanges:
-    - 0.0.0.0/0
+    - {{ properties["myip"] }}/32
     targetTags:
     - ae-server
   type: compute.v1.firewall
@@ -97,6 +97,22 @@ resources:
     - 216.161.252.106/32
     - 73.221.194.15/32
   type: compute.v1.firewall
+- name: aemain-github-webhooks-{{ properties["stamp"] }}
+  properties:
+    allowed:
+    - IPProtocol: tcp
+    description: ''
+    direction: INGRESS
+    disabled: false
+    logConfig:
+      enable: false
+    network: $(ref.aemain-v1-network-{{ properties["stamp"] }}.selfLink)
+    priority: 1000
+    sourceRanges:
+    - 140.82.112.0/20
+    - 185.199.108.0/22
+    - 192.30.252.0/22
+  type: compute.v1.firewall
 - name: aemain-icmp-{{ properties["stamp"] }}
   properties:
     allowed:
@@ -126,6 +142,7 @@ resources:
     priority: 1000
     sourceRanges:
     - {{ properties["ipcidr"] }}
+    - {{ properties["myip"] }}/32
     targetTags:
     - allow-rdp
   type: compute.v1.firewall
@@ -144,6 +161,7 @@ resources:
     priority: 1000
     sourceRanges:
     - {{ properties["ipcidr"] }}
+    - {{ properties["myip"] }}/32
     targetTags:
     - allow-ssh
   type: compute.v1.firewall

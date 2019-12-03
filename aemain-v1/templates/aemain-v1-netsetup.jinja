@@ -20,6 +20,7 @@ resources:
   properties:
     stamp: {{ properties["stamp"] }}
     ipcidr: {{ properties["ipcidr"] }}
+    myip: {{ properties["myip"] }}
 - name: aemain-managed-zone-{{ properties["stamp"] }}
   type: dns_managed_zone.py
   properties:

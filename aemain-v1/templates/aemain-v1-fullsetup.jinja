@@ -6,6 +6,7 @@ resources:
     region: {{ properties["region"] }}
     ipcidr: {{ properties["ipcidr"] }}
     iptri: {{ properties["iptri"] }}
+    myip: {{ properties["myip"] }}
     dnsext: {{ properties["dnsext"] }}
 - name: aemain-vm-deployment-{{ properties["stamp"] }}
   type: aemain-v1-vmsetup.jinja

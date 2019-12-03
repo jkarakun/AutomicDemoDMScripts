@@ -24,5 +24,6 @@ resources:
     zone: us-east1-c
     ipcidr: 192.168.2.0/24
     iptri: 192.168.2
+    myip: 127.0.0.1
 # Note: Leave dnsext 'private'. If you set it to a value you'll need to change all the DNS names in the configuration files.
     dnsext: 'private'
